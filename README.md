@@ -29,9 +29,8 @@ Must contain a gene-by-cell count matrix
 
 If multiple assays are present, the default assay "Gene Expression" is used (configurable via assay_name)
 
-OR
 
-Expression matrix
+2. Expression matrix
 
 A gene-by-cell matrix (matrix or dgCMatrix)
 
