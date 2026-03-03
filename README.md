@@ -2,8 +2,6 @@
 
 **Binary-SPA** is a marker-based cell type annotation framework for spatial transcriptomics analysis.
 
-It performs binary marker scoring and delta-based classification to assign cell identities from spatial gene expression matrices.
-
 ---
 
 ## Installation
