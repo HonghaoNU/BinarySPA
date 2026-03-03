@@ -17,8 +17,27 @@ devtools::install_github("HonghaoNU/BinarySPA")
 
 ## Input Requirements
 
-- 10x Genomics `.h5` expression file (e.g., Xenium `cell_feature_matrix.h5`)
-- Marker gene matrix (.csv)
+Binary-SPA accepts one of the following expression inputs:
+
+1. Expression Data
+
+10x Genomics HDF5 file (.h5)
+
+Example: Xenium cell_feature_matrix.h5
+
+Must contain a gene-by-cell count matrix
+
+If multiple assays are present, the default assay "Gene Expression" is used (configurable via assay_name)
+
+OR
+
+Expression matrix
+
+A gene-by-cell matrix (matrix or dgCMatrix)
+
+Row names: gene symbols
+
+Column: cell IDs
 
 ---
 
