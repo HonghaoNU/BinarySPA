@@ -87,3 +87,4 @@ Tested with:
 - R >= 4.2
 - Seurat
 - Matrix
+- hdf5r
