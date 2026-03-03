@@ -58,17 +58,10 @@ res <- run_binary_spa(
 
 `run_binary_spa()` returns:
 
-- Cell-level annotations
-- Marker scores
-- Delta-based classification results
+- a CSV file containing cell-level annotations
+- a CSV file summarizing cell-type proportions
+- an .rds file bundling the two outputs above
 
-You can export:
-
-```r
-utils::write.csv(res, "binary_spa_results.csv", row.names = FALSE)
-```
-
----
 
 ## Method Overview
 
