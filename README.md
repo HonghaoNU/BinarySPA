@@ -64,10 +64,8 @@ res <- run_binary_spa(
 ## Method Overview
 
 1. Load gene-by-cell matrix from 10x HDF5
-2. Convert to cell-by-gene format
-3. Align marker matrix to expression matrix
-4. Compute binary marker scores
-5. Assign cell types based on delta threshold
+2. Compute binary marker scores
+3. Assign cell types
 
 ---
 
