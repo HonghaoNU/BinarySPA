@@ -86,4 +86,4 @@ Binary-SPA is free for academic and non-profit research use.
 
 Commercial use requires a commercial license.
 
-For licensing inquiries: honghao.bi@northwestern.edu
+For licensing inquiries: honghao.bi@northwestern.edu, ji.peng@northwestern.edu
