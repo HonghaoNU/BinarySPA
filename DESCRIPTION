@@ -2,7 +2,11 @@ Package: BinarySPA
 Title: What the Package Does (One Line, Title Case)
 Version: 0.0.0
 Authors@R: 
-    person("Honghao", "Bi", , "honghao.bi@northwestern.edu", role = c("aut", "cre"))
+    c(
+      person("Honghao", "Bi", email = "honghao.bi@northwestern.edu", 
+             role = c("aut", "cre")),
+      person("Peng", "Ji", role = "ths", comment = "Principal Investigator")
+    )
 Description: BinarySPA is a marker based annotation tool for high resolution spatial transcriptomics data
 License: file LICENSE
 Encoding: UTF-8
