@@ -77,3 +77,13 @@ Tested with:
 - Seurat
 - Matrix
 - hdf5r
+
+---
+
+## License
+
+Binary-SPA is free for academic and non-profit research use.
+
+Commercial use requires a commercial license.
+
+For licensing inquiries: honghao.bi@northwestern.edu
