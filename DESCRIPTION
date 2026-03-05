@@ -4,7 +4,7 @@ Version: 0.0.0
 Authors@R: 
     person("Honghao", "Bi", , "honghao.bi@northwestern.edu", role = c("aut", "cre"))
 Description: BinarySPA is a marker based annotation tool for high resolution spatial transcriptomics data
-License:
+License: file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.3
