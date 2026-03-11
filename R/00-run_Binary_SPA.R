@@ -37,10 +37,6 @@ run_binary_spa <- function(
     cells_keep <- colnames(counts_gxc)[seq_len(min(subset_n, ncol(counts_gxc)))]
     counts_gxc <- counts_gxc[, cells_keep, drop = FALSE]
 
-    # Keep first 5000 cells
-    cells_keep <- colnames(counts_gxc)[1:500]
-    counts_gxc <- counts_gxc[, cells_keep, drop = FALSE]
-
     message("Subset to ", ncol(counts_gxc), " cells.")
   }
 
