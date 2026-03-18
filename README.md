@@ -80,10 +80,20 @@ Tested with:
 
 ---
 
+## Reference
+
+If you use Binary-SPA, please cite:
+
+Binary-SPA: A marker-based framework for cell type annotation in spatial transcriptomics
+https://www.biorxiv.org/content/10.64898/2026.03.17.712369v1
+
+---
+
 ## License
 
 Binary-SPA is free for academic and non-profit research use.
 
 Commercial use requires a commercial license.
+
 
 For licensing inquiries: honghao.bi@northwestern.edu, ji.peng@northwestern.edu
