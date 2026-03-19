@@ -53,7 +53,8 @@ The marker file must be a **CSV file** containing a binary marker matrix.
 - A gene can be a marker for multiple cell types  
 - All non-marker entries should be `0`  
 - Column names should be gene symbols  
-- Row names should be cell type labels  
+- Row names should be cell type labels
+- Make sure the list of cell types is comprehensive, since Binary-SPA will assign every cell to one of the provided cell types  
 - The marker file should be saved as a `.csv` file
   
 ### Example (markers.csv)
