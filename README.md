@@ -15,27 +15,57 @@ devtools::install_github("HonghaoNU/BinarySPA")
 
 ## Input Requirements
 
-Binary-SPA accepts one of the following expression inputs:
+Binary-SPA requires an expression matrix and a marker file.
 
-1. Expression Data
+---
 
-10x Genomics HDF5 file (.h5)
+## 1. Expression data (10x Genomics HDF5)
 
-Example: Xenium cell_feature_matrix.h5
+- File format: `.h5`  
+- Example: `cell_feature_matrix.h5` (Xenium / Visium / 10x output)  
+- Must contain a **gene-by-cell count matrix**  
+- If multiple assays are present, the default assay **"Gene Expression"** is used  
+  (configurable via `assay_name`)
 
-Must contain a gene-by-cell count matrix
+---
 
-If multiple assays are present, the default assay "Gene Expression" is used (configurable via assay_name)
+## 2. Expression matrix
 
+- A gene-by-cell matrix (`matrix` or `dgCMatrix`)  
+- Row names: gene symbols  
+- Column names: cell IDs  
 
-2. Expression matrix
+---
 
-A gene-by-cell matrix (matrix or dgCMatrix)
+## 3. Marker file (CSV required)
 
-Row names: gene symbols
+The marker file must be a **CSV file** containing a binary marker matrix.
 
-Column: cell IDs
+- Rows = cell types  
+- Columns = marker genes  
+- Values must be `0` or `1`
 
+### Rules
+
+- `1` indicates the gene is a marker for the cell type  
+- `0` indicates the gene is not a marker  
+- A cell type can have multiple markers  
+- A marker gene can belong to multiple cell types  
+- All non-marker entries must be `0`  
+- Column names must be gene symbols  
+- Row names must be cell type labels  
+- File format must be `.csv`
+
+### Example (markers.csv)
+
+```
+cell_type,CD3D,CD3E,MS4A1,LYZ,GAD1
+T_cell,1,1,0,0,0
+B_cell,0,0,1,0,0
+Myeloid,0,0,0,1,0
+Neuron,0,0,0,0,1
+Mixed,1,0,1,0,0
+```
 ---
 
 ## Quick Start Example
