@@ -47,15 +47,15 @@ The marker file must be a **CSV file** containing a binary marker matrix.
 
 ### Rules
 
-- `1` indicates the gene is a marker for the cell type  
-- `0` indicates the gene is not a marker  
-- A cell type can have multiple markers  
-- A marker gene can belong to multiple cell types  
-- All non-marker entries must be `0`  
-- Column names must be gene symbols  
-- Row names must be cell type labels  
-- File format must be `.csv`
-
+- Use `1` to indicate that a gene is a marker for a cell type  
+- Use `0` when the gene is not a marker  
+- Each cell type can have multiple marker genes  
+- A gene can be a marker for multiple cell types  
+- All non-marker entries should be `0`  
+- Column names should be gene symbols  
+- Row names should be cell type labels  
+- The marker file should be saved as a `.csv` file
+- 
 ### Example (markers.csv)
 
 ```
