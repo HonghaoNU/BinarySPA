@@ -55,7 +55,7 @@ The marker file must be a **CSV file** containing a binary marker matrix.
 - Column names should be gene symbols  
 - Row names should be cell type labels  
 - The marker file should be saved as a `.csv` file
-- 
+  
 ### Example (markers.csv)
 
 ```
