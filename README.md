@@ -45,7 +45,7 @@ The marker file must be a **CSV file** containing a binary marker matrix.
 - Columns = marker genes  
 - Values must be `0` or `1`
 
-### Rules
+### Format
 
 - Use `1` to indicate that a gene is a marker for a cell type  
 - Use `0` when the gene is not a marker  
