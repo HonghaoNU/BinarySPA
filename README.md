@@ -100,7 +100,7 @@ res <- run_binary_spa(
 
 ---
 
-## Reproducibility
+## Environment and Dependencies
 
 Tested with:
 
