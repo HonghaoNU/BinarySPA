@@ -15,7 +15,7 @@
 #' @param save_outputs Logical; whether to write RDS and CSV files (default = TRUE)
 #'
 #' @return A list containing:
-#'   - seu (Seurat object)
+#'   - seu
 #'   - score_matrix
 #'   - annotation_table
 #'   - proportion_table
@@ -83,6 +83,7 @@ run_binary_spa <- function(
   cell_annot <- data.frame(
     cell_id = colnames(seu),
     Binary_SPA = as.character(seu$Binary_SPA),
+    Binary_SPA_confidence = as.character(seu$Binary_SPA_confidence),
     stringsAsFactors = FALSE,
     check.names = FALSE
   )

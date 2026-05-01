@@ -10,8 +10,9 @@
 #' @param dims Dimensions for anchors/UMAP (default 1:30).
 #' @param n_neighbors UMAP neighbors for reference (default 5).
 #' @param verbose Print progress (default TRUE).
+#' @param confidence_col Metadata column for confidence output.
 #'
-#' @return Seurat object with Binary_SPA added.
+#' @return Seurat object with Binary_SPA and Binary_SPA_confidence added.
 #' @export
 binary_spa_transfer_labels <- function(
     seu,
@@ -19,7 +20,8 @@ binary_spa_transfer_labels <- function(
     npcs = 30,
     dims = 1:30,
     n_neighbors = 5,
-    verbose = TRUE
+    verbose = TRUE,
+    confidence_col = "Binary_SPA_confidence"
 ) {
 
   if (!requireNamespace("Seurat", quietly = TRUE)) {
@@ -46,6 +48,8 @@ binary_spa_transfer_labels <- function(
   # If no query, just copy labels over
   if (length(query_cells) == 0L) {
     seu$Binary_SPA <- as.character(lab)
+    seu[[confidence_col]] <- rep("clear cells", ncol(seu))
+
     if (verbose) message("No query cells. Binary_SPA copied from ", label_col, ".")
     return(seu)
   }
@@ -54,22 +58,24 @@ binary_spa_transfer_labels <- function(
   ref <- seu[, ref_cells, drop = FALSE]
   query <- seu[, query_cells, drop = FALSE]
 
-
   # ---- Reference processing ----
   ref <- Seurat::NormalizeData(ref, verbose = FALSE)
   ref <- Seurat::FindVariableFeatures(ref, verbose = FALSE)
   ref <- Seurat::ScaleData(ref, verbose = FALSE)
   ref <- Seurat::RunPCA(ref, npcs = npcs, verbose = FALSE)
-  ref <- Seurat::RunUMAP(ref, dims = dims, n.neighbors = n_neighbors,
-                         return.model = TRUE, verbose = FALSE)
+  ref <- Seurat::RunUMAP(
+    ref,
+    dims = dims,
+    n.neighbors = n_neighbors,
+    return.model = TRUE,
+    verbose = FALSE
+  )
 
   # ---- Query processing ----
   query <- Seurat::NormalizeData(query, verbose = FALSE)
   query <- Seurat::FindVariableFeatures(query, verbose = FALSE)
   query <- Seurat::ScaleData(query, verbose = FALSE)
   query <- Seurat::RunPCA(query, npcs = npcs, verbose = FALSE)
-
-
 
   # ---- Anchors ----
   anchors <- Seurat::FindTransferAnchors(
@@ -80,7 +86,6 @@ binary_spa_transfer_labels <- function(
     dims = dims,
     verbose = FALSE
   )
-
 
   # ---- Map query ----
   query <- Seurat::MapQuery(
@@ -94,10 +99,38 @@ binary_spa_transfer_labels <- function(
   )
 
   # ---- Merge back into full object ----
-  seu$Binary_SPA <- NA_character_
-  seu$Binary_SPA[ref_cells] <- as.character(ref[[label_col, drop = TRUE]])
-  seu$Binary_SPA[query_cells] <- as.character(query$predicted.Binary_SPA)
+  final_labels <- rep(NA_character_, ncol(seu))
+  names(final_labels) <- colnames(seu)
+
+  final_labels[ref_cells] <- as.character(ref[[label_col, drop = TRUE]])
+  final_labels[query_cells] <- as.character(query$predicted.Binary_SPA)
+
+  seu$Binary_SPA <- final_labels
+
+  # ---- Add confidence score ----
+  # Ref cells are original clear cells.
+  # Query cells get MapQuery prediction score.
+  final_confidence <- rep(NA_character_, ncol(seu))
+  names(final_confidence) <- colnames(seu)
+
+  final_confidence[ref_cells] <- "clear cells"
+
+  score_col <- "predicted.Binary_SPA.score"
+
+  if (!(score_col %in% colnames(query@meta.data))) {
+    stop(
+      "MapQuery confidence score column not found: ", score_col,
+      ". Available metadata columns: ",
+      paste(colnames(query@meta.data), collapse = ", "),
+      call. = FALSE
+    )
+  }
+
+  final_confidence[query_cells] <- as.character(query@meta.data[[score_col]])
+
+  seu[[confidence_col]] <- final_confidence
 
   if (verbose) message("Binary_SPA label transfer complete.")
+
   seu
 }
