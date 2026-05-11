@@ -15,3 +15,9 @@ The SPATCH download was converted to a 10x-style HDF5 file named:
 ```txt
 example/data/example.h5
 
+## Convert SPATCH h5ad to 10x HDF5
+
+If the downloaded SPATCH file is an AnnData `.h5ad` file, place it here:
+
+```txt
+example/data/adata.h5ad
