@@ -16,3 +16,21 @@ If the downloaded SPATCH file is an AnnData `.h5ad` file, place it here:
 
 ```txt
 example/data/adata.h5ad
+
+
+## Installation
+
+Create and activate a conda environment with R 4.2 and the required dependencies:
+
+```bash
+conda create -p /path/to/binaryspa -c conda-forge -c bioconda \
+  r-base=4.2 \
+  r-devtools \
+  r-seurat \
+  r-matrix \
+  r-hdf5r \
+  r-remotes \
+  r-irkernel \
+  git
+
+conda activate /path/to/binaryspa
