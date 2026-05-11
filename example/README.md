@@ -10,9 +10,7 @@ Ren P, Zhang R, Wang Y, Zhang P, Luo C, Wang S, Li X, Zhang Z, Zhao Y, He Y, Li 
 
 ## Required input
 
-The SPATCH download was converted to a 10x-style HDF5 file named:
-
-## Convert SPATCH h5ad to 10x HDF5
+BinarySPA requires a 10x-style HDF5 count matrix.
 
 If the downloaded SPATCH file is an AnnData `.h5ad` file, place it here:
 
