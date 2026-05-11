@@ -9,3 +9,8 @@ example/data/*
 !example/data/.gitkeep
 example/results/*
 !example/results/.gitkeep
+
+example/data/*
+!example/data/.gitkeep
+example/results/*
+!example/results/.gitkeep
