@@ -1,5 +1,5 @@
 Package: BinarySPA
-Title: What the Package Does (One Line, Title Case)
+Title: Binary Marker-Based Cell Type Annotation for High-Resolution Spatial Transcriptomics
 Version: 1.0.0
 Authors@R: 
     c(
