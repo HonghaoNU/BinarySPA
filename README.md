@@ -115,8 +115,9 @@ Tested with:
 
 If you use Binary-SPA, please cite:
 
-Binary-SPA: A marker-based framework for cell type annotation in spatial transcriptomics
-https://www.biorxiv.org/content/10.64898/2026.03.17.712369v1
+
+Honghao Bi, Wenjie Cai, Pan Wang, Kehan Ren, Inci Aydemir, Ermin Li, Johanna Melo-Cardenas, Matthew J Schipma, Ching Man Wai, Peng Ji, Binary-SPA: a reference-free method for cell annotation in high-resolution spatial transcriptomics, Nucleic Acids Research, Volume 54, Issue 15, 27 August 2026, gkag812, https://doi.org/10.1093/nar/gkag812
+
 
 ---
 
